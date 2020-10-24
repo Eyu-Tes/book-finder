@@ -1,0 +1,10 @@
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+}
+  
+/* remove the blue outlines on form elements */
+input, button, select {
+    box-shadow: none !important;
+    outline: none !important;
+}

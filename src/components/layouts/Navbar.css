@@ -1,0 +1,44 @@
+.navbar {
+    background-color: #c53030;
+}
+
+.navbar-brand {
+    color: #fff;
+    font-size: 1.5rem !important;
+}
+
+.navbar-brand img {
+    margin-right: 5px;
+}
+
+.navbar-brand:hover {
+    color: #fff;
+}
+
+.navbar-nav .nav-link {
+    color: #fff;
+    margin-right: .75rem;
+    font-size: 1.15rem;
+}
+
+/* nav links except dropdown links */
+.navbar-nav .nav-link:not(.dropdown-toggle):hover {
+    color: #000;
+}
+
+/* navbar dropdown with hover effect */
+@media (min-width: 768px) {
+	.navbar .nav-item .dropdown-menu{ display: none; }
+	.navbar .nav-item:hover .dropdown-menu{ display: block; }
+	.navbar .nav-item .dropdown-menu{ margin-top:0; }
+}
+
+.navbar-toggler-icon {
+    /* Must override the default background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(0, 0, 0, 0.5)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e"); */
+    /* Only change the ---> stroke='rgba(0, 0, 0, 0.5)' to stroke='rgba(255, 255, 255, 1)' */
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+}
+
+.navbar-toggler-icon:active {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(0, 0, 0, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+}

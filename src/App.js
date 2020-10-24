@@ -1,11 +1,13 @@
-import './App.css';
+import {Component} from 'react'
+import Navbar from './components/layouts/Navbar'
+import './App.css'
 
-function App() {
-  return (
-    <div className="App">
-      <h1>Book Finder</h1>
-    </div>
-  );
+class App extends Component {
+  render() {
+    return(
+      <Navbar/>
+    )
+  }
 }
 
 export default App;

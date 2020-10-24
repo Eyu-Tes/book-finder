@@ -1,3 +1,8 @@
+/* Global Styles */
+:root {
+    --light-color: #f4f4f4;
+}
+
 body {
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, sans-serif;
@@ -7,4 +12,32 @@ body {
 input, button, select {
     box-shadow: none !important;
     outline: none !important;
+}
+
+.btn-light {
+    background-color: var(--light-color) !important;
+    border-color: var(--light-color) !important;
+}
+
+.alert-light {
+    background-color: var(--light-color) !important;
+    color: #333;
+}
+
+#book-form input {
+    border: 2px solid #ced4da;
+    border-radius: 0;
+    padding: 7.5px 5px;
+    background-color: transparent;
+    font-size: 1.15rem;
+}
+
+#book-form input[type=text] {
+    border: 0;
+    border-bottom: 2px solid #ced4da;
+}
+
+#book-form input:focus {
+    border-color: #d1410c;
+    transition: .2s ease-in-out;
 }

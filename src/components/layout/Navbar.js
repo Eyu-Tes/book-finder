@@ -4,7 +4,9 @@ import './Navbar.css'
 
 const Navbar = () => 
     <nav className="navbar navbar-expand-md">
-        <a className="navbar-brand" href="#"> <img src={logo}/> Book Finder </a>
+        <a className="navbar-brand" href="/#"> 
+            <img src={logo} alt="book finder"/> Book Finder 
+        </a>
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar">
             <span className="navbar-toggler-icon"></span>
         </button>
@@ -13,10 +15,10 @@ const Navbar = () =>
             <div className="dropdown-divider"></div>
             <ul className="navbar-nav ml-auto">
                 <li className="nav-item">
-                    <a className="nav-link" href="#">Home</a>
+                    <a className="nav-link" href="/#">Home</a>
                 </li>
                 <li className="nav-item">
-                    <a className="nav-link" href="#">About</a>
+                    <a className="nav-link" href="/#">About</a>
                 </li>
             </ul>
         </div>

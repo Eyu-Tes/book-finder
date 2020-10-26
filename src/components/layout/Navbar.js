@@ -1,26 +1,29 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 import logo from './book-finder.png'
 import './Navbar.css'
 
 const Navbar = () => 
     <nav className="navbar navbar-expand-md">
-        <a className="navbar-brand" href="/#"> 
-            <img src={logo} alt="book finder"/> Book Finder 
-        </a>
-        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar">
-            <span className="navbar-toggler-icon"></span>
-        </button>
+        <div className="container">
+            <a className="navbar-brand" href="/#"> 
+                <img src={logo} alt="book finder"/> Book Finder 
+            </a>
+            <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar">
+                <span className="navbar-toggler-icon"></span>
+            </button>
 
-        <div className="collapse navbar-collapse" id="navbar">
-            <div className="dropdown-divider"></div>
-            <ul className="navbar-nav ml-auto">
-                <li className="nav-item">
-                    <a className="nav-link" href="/#">Home</a>
-                </li>
-                <li className="nav-item">
-                    <a className="nav-link" href="/#">About</a>
-                </li>
-            </ul>
+            <div className="collapse navbar-collapse" id="navbar">
+                <div className="dropdown-divider"></div>
+                <ul className="navbar-nav ml-auto">
+                    <li className="nav-item">
+                        <Link to="/" className="nav-link">Home</Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link to="/about" className="nav-link">About</Link>
+                    </li>
+                </ul>
+            </div>
         </div>
     </nav>
 

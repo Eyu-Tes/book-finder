@@ -1,9 +1,11 @@
-import React, {Component} from 'react'
+import React, {Component, Fragment} from 'react'
+import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 import axios from 'axios'
 import Navbar from './components/layout/Navbar'
 import Search from './components/books/Search'
 import Alert from './components/layout/Alert'
 import Books from './components/books/Books'
+import About from './components/pages/About'
 import './App.css'
 
 class App extends Component {
@@ -38,24 +40,33 @@ class App extends Component {
   }
 
   render() {
-    const {books, loading} = this.state
+    const {books, loading, alert} = this.state
     return(
-      <div className="App">
-        <Navbar/>
-        <div className="container mt-3">
-          <Alert alert={this.state.alert}/>
-          <Search 
-            searchBooks={this.searchBooks} 
-            clearBooks={this.clearBooks} 
-            showClear={books.length > 0 ? true : false}
-            showAlert={this.showAlert}
-          />
-          <Books 
-            books={books} 
-            loading={loading}
-          />
+      <Router>
+        <div className="App">
+          <Navbar/>
+          <div className="container mt-3">
+            <Alert alert={alert}/>
+            <Switch>
+              <Route exact path="/" render={props => 
+                <Fragment>
+                  <Search 
+                    searchBooks={this.searchBooks} 
+                    clearBooks={this.clearBooks} 
+                    showClear={books.length > 0 ? true : false}
+                    showAlert={this.showAlert}
+                  />
+                  <Books 
+                    books={books} 
+                    loading={loading}
+                  />
+                </Fragment>
+              } />
+              <Route exact path="/about" component={About} />
+            </Switch>
+          </div>
         </div>
-      </div>
+      </Router>
     )
   }
 }

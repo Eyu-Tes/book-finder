@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import BookItem from './BookItem'
 import Spinner from '../layout/Spinner'
 
@@ -8,5 +9,10 @@ const Books = ({books, loading}) =>
             books.map((book, i) => <BookItem key={i} book={book}/>)
         )}
     </div>
+
+Books.propTypes = {
+    books: PropTypes.array.isRequired, 
+    loading: PropTypes.bool.isRequired
+}
 
 export default Books

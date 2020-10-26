@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import img from '../layout/no-image-available.png'
 
 const BookItem = ({book}) => {
@@ -16,5 +17,9 @@ const BookItem = ({book}) => {
             </div>
         </div>
 )}
+
+BookItem.propTypes = {
+    book: PropTypes.object.isRequired
+}
 
 export default BookItem

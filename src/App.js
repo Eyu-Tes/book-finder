@@ -1,8 +1,9 @@
-import {Component} from 'react'
+import React, {Component} from 'react'
 import axios from 'axios'
 import Navbar from './components/layout/Navbar'
 import Search from './components/books/Search'
 import Alert from './components/layout/Alert'
+import Books from './components/books/Books'
 import './App.css'
 
 class App extends Component {
@@ -16,10 +17,10 @@ class App extends Component {
   searchBooks = async (text) => {
     this.setState({loading: true})
     try {
-      const res = await axios.get(`https://www.googleapis.com/books/v1/volumes?q=${text}`)
+      const url = `https://www.googleapis.com/books/v1/volumes?q=intitle:"${text}"&maxResults=40`
+      const res = await axios.get(url)
       // set books state to [] if res.data.items is undefined
       this.setState({books: res.data.items || []})
-      console.log(res.data.items)
     } catch (error) {
       console.log(error)
     }
@@ -37,16 +38,21 @@ class App extends Component {
   }
 
   render() {
+    const {books, loading} = this.state
     return(
-      <div  Name="App">
+      <div className="App">
         <Navbar/>
         <div className="container mt-3">
           <Alert alert={this.state.alert}/>
           <Search 
             searchBooks={this.searchBooks} 
             clearBooks={this.clearBooks} 
-            showClear={this.state.books.length > 0 ? true : false}
+            showClear={books.length > 0 ? true : false}
             showAlert={this.showAlert}
+          />
+          <Books 
+            books={books} 
+            loading={loading}
           />
         </div>
       </div>

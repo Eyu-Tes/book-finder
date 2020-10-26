@@ -1,0 +1,17 @@
+#book-form input {
+    border: 2px solid #ced4da;
+    border-radius: 0;
+    padding: 7.5px 5px;
+    background-color: transparent;
+    font-size: 1.15rem;
+}
+
+#book-form input[type=text] {
+    border: 0;
+    border-bottom: 2px solid #ced4da;
+}
+
+#book-form input:focus {
+    border-color: #d1410c;
+    transition: .2s ease-in-out;
+}

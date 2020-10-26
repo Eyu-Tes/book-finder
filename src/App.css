@@ -5,7 +5,7 @@
 
 body {
     margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family: 'Trebuchet MS', -apple-system, BlinkMacSystemFont, sans-serif;
 }
   
 /* remove the blue outlines on form elements */
@@ -24,20 +24,11 @@ input, button, select {
     color: #333;
 }
 
-#book-form input {
-    border: 2px solid #ced4da;
-    border-radius: 0;
-    padding: 7.5px 5px;
-    background-color: transparent;
-    font-size: 1.15rem;
+#book-card a {
+    color: #000;
 }
 
-#book-form input[type=text] {
-    border: 0;
-    border-bottom: 2px solid #ced4da;
-}
-
-#book-form input:focus {
-    border-color: #d1410c;
-    transition: .2s ease-in-out;
+#book-card a:hover {
+    color: #c53030;
+    text-decoration: none;
 }

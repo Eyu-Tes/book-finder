@@ -1,5 +1,6 @@
-import {Component} from 'react'
+import React, {Component, Fragment} from 'react'
 import PropTypes from 'prop-types'
+import './Search.css'
 
 class Search extends Component {
     static propTypes = {
@@ -30,7 +31,7 @@ class Search extends Component {
     render() {
         const {showClear, clearBooks} = this.props
         return(
-            <div>
+            <Fragment>
                 <form id="book-form" className="mt-3" onSubmit={this.onSubmit}>
                     <div className="form-group">
                         <input 
@@ -38,7 +39,7 @@ class Search extends Component {
                             type="text" 
                             className="form-control" 
                             autoFocus
-                            placeholder='book or author name here ...'
+                            placeholder='Search books ...'
                             value={this.state.text}
                             onChange={this.onChange}
                         />
@@ -50,7 +51,7 @@ class Search extends Component {
                         )}
                     </div>
                 </form>
-            </div>
+            </Fragment>
         );
     }
 }

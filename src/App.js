@@ -18,11 +18,10 @@ class App extends Component {
   }
 
   // search books
-  searchBooks = async (text) => {
+  searchBooks = async text => {
     this.setState({loading: true})
     try {
-      const url = `https://www.googleapis.com/books/v1/volumes?q=intitle:"${text}"&maxResults=40`
-      const res = await axios.get(url)
+      const res = await axios.get(`https://www.googleapis.com/books/v1/volumes?q=intitle:"${text}"&maxResults=40`)
       // set books state to [] if res.data.items is undefined
       this.setState({books: res.data.items || []})
     } catch (error) {
@@ -32,13 +31,10 @@ class App extends Component {
   } 
 
   // get book
-  getBook = async (id) => {
-    console.log('haha')
+  getBook = async bookId => {
     this.setState({loading: true})
     try {
-      const url = `https://www.googleapis.com/books/v1/volumes/${id}`
-      console.log(url)
-      const res = await axios.get(url)
+      const res = await axios.get(`https://www.googleapis.com/books/v1/volumes/${bookId}`)
       this.setState({book: res.data})
     } catch (error) {
       console.log(error)  
@@ -80,13 +76,14 @@ class App extends Component {
                 </Fragment>
               } />
               <Route exact path="/about" component={About} />
-              <Route exact path="/book/:id" render={props => (
+              <Route exact path="/book/:bookId" render={props => 
                 <Book 
                   {...props} 
+                  getBook={this.getBook}
                   book={book} 
                   loading={loading}
-                  getBook={this.getBook} />
-              )} />
+                />
+              } />
             </Switch>
           </div>
         </div>

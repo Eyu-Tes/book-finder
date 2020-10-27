@@ -6,7 +6,7 @@ import Spinner from '../layout/Spinner'
 const Books = ({books, loading}) => 
     <div className="row mt-5">
         {loading ? <Spinner/> : (
-            books.map((book, i) => <BookItem key={i} book={book}/>)
+            books.map(book => <BookItem key={book.id} book={book}/>)
         )}
     </div>
 

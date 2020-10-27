@@ -10,36 +10,39 @@ class Book extends Component {
         getBook: PropTypes.func.isRequired
     }
     componentDidMount() {
-        const id = this.props.match.params.id
-        this.props.getBook(id)
+        const bookId = this.props.match.params.bookId
+        this.props.getBook(bookId)
     }
     render() {
-        const {book, loading} = this.props
-        const {title, authors, publisher, publishedDate, pageCount, language, imageLinks:{thumbnail}} = book.volumeInfo
-        return(
+        // set default or fall back values, 
+        // since there is nothing to destructure when book object is empty
+        const {book:{volumeInfo={}}, loading} = this.props        
+        const {title='', authors=[], publisher='', publishedDate='', pageCount=0, language='', previewLink='', imageLinks:{thumbnail=''}={}} = volumeInfo
+        return (
             loading ? 
-            <Spinner/> :
+            <Spinner/> : 
             <Fragment>
-                <Link to="/">
-                    <button className="btn btn-light"><i className="fa fa-arrow-circle-left mr-2"></i> Back to Search</button>
-                </Link>
-                <div className="card border-0 mt-3 p-1">
+                <Link to="/" className="btn btn-light"><i className="fa fa-arrow-circle-left mr-2"></i> Back To Search</Link>
+                <div className="card border-0 my-3 p-1">
                     <div className="row">
-                        <div className="col-4">
-                            <img src={thumbnail} alt="" className="card-img-top h-75"/>
+                        <div className="col-sm-4">
+                            <img src={thumbnail} alt="" className="card-img-top"/>
                         </div>
-                        <div className="col-8">
-                            <h4 className="my-3">{title}</h4>
-                            <p>Author(s): <b>{authors.join(', ')}</b></p>
-                            <p>Date Published: <b>{publishedDate}</b></p>
-                            <p>Publisher: <b>{publisher}</b></p>
-                            <p>Language: <b>{language}</b></p>
-                            <p>Pages: <b>{pageCount}</b></p>
+                        <div className="col-sm-8">
+                            <div className="px-5">
+                                <h4 className="my-3"><b>{title}</b></h4>
+                                <p>Author(s): <b>{authors.join(', ')}</b></p>
+                                <p>Date Published: <b>{publishedDate}</b></p>
+                                <p>Publisher: <b>{publisher}</b></p>
+                                <p>Language: <b>{language}</b></p>
+                                <p>Pages: <b>{pageCount}</b></p>
+                                <a href={previewLink} className="btn btn-outline-dark rounded-0">Preview Link</a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </Fragment>
-        )
+        );
     }
 }
 

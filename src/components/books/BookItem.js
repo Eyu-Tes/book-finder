@@ -3,8 +3,7 @@ import {Link} from 'react-router-dom'
 import PropTypes from 'prop-types'
 import img from '../layout/no-image-available.png'
 
-const BookItem = ({book:{id, volumeInfo}}) => {
-    const {title, imageLinks} = volumeInfo
+const BookItem = ({book:{id, volumeInfo: {title, imageLinks}}}) => {
     const thumbnail = imageLinks ? imageLinks.thumbnail : null
     return(
         <div className="col-sm-6 col-md-4 col-lg-3">

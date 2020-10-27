@@ -5,12 +5,14 @@ import Navbar from './components/layout/Navbar'
 import Search from './components/books/Search'
 import Alert from './components/layout/Alert'
 import Books from './components/books/Books'
+import Book from './components/books/Book'
 import About from './components/pages/About'
 import './App.css'
 
 class App extends Component {
   state = {
     books: [],
+    book: {},
     loading: false,
     alert: null,
   }
@@ -29,6 +31,21 @@ class App extends Component {
     this.setState({loading: false})
   } 
 
+  // get book
+  getBook = async (id) => {
+    console.log('haha')
+    this.setState({loading: true})
+    try {
+      const url = `https://www.googleapis.com/books/v1/volumes/${id}`
+      console.log(url)
+      const res = await axios.get(url)
+      this.setState({book: res.data})
+    } catch (error) {
+      console.log(error)  
+    }
+    this.setState({loading: false})
+  }
+
   // clear books form state
   clearBooks = () => this.setState({books: []})
 
@@ -40,7 +57,7 @@ class App extends Component {
   }
 
   render() {
-    const {books, loading, alert} = this.state
+    const {books, book, loading, alert} = this.state
     return(
       <Router>
         <div className="App">
@@ -63,6 +80,13 @@ class App extends Component {
                 </Fragment>
               } />
               <Route exact path="/about" component={About} />
+              <Route exact path="/book/:id" render={props => (
+                <Book 
+                  {...props} 
+                  book={book} 
+                  loading={loading}
+                  getBook={this.getBook} />
+              )} />
             </Switch>
           </div>
         </div>

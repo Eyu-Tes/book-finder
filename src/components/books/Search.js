@@ -3,10 +3,24 @@ import PropTypes from 'prop-types'
 import './Search.css'
 
 const Search = ({showClear, clearBooks, showAlert, searchBooks}) => {
-    const [text, setText] = useState('')
+    // How to use a single event handler for all input fields when using the useState hook
+    const initialState = {
+        text: '', 
+    }
+    
+    // initialize state
+    const [values, setValues] = useState(initialState)
 
-    const onChange = (e) => setText(e.target.value)
+    // destructure state value(s)
+    const {text} = values
 
+    // on input field change
+    const onChange = (e) => setValues({
+        ...values,
+        [e.target.name]: e.target.value
+    })
+
+    // on form submit
     const onSubmit = (e) => {
         e.preventDefault()
         if (text.trim() === '') {
@@ -14,7 +28,10 @@ const Search = ({showClear, clearBooks, showAlert, searchBooks}) => {
         }
         else {
             searchBooks(text)
-            setText('')
+            setValues({
+                ...values, 
+                text: ''
+            })
         }
     }
 

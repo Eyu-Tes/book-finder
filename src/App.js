@@ -1,4 +1,4 @@
-import React, {Component, Fragment} from 'react'
+import React, {Fragment, useState} from 'react'
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 import axios from 'axios'
 import Navbar from './components/layout/Navbar'
@@ -9,87 +9,82 @@ import Book from './components/books/Book'
 import About from './components/pages/About'
 import './App.css'
 
-class App extends Component {
-  state = {
-    books: [],
-    book: {},
-    loading: false,
-    alert: null,
-  }
+const App = () => {
+  const [books, setBooks] = useState([])
+  const [book, setBook] = useState({})
+  const [loading, setLoading] = useState(false)
+  const [alert, setAlert] = useState(null)
 
   // search books
-  searchBooks = async text => {
-    this.setState({loading: true})
+  const searchBooks = async text => {
+    setLoading(true)
     try {
       const res = await axios.get(`https://www.googleapis.com/books/v1/volumes?q=intitle:"${text}"&maxResults=40`)
       // set books state to [] if res.data.items is undefined
-      this.setState({books: res.data.items || []})
+      setBooks(res.data.items || [])
     } catch (error) {
       console.log(error)
     }
-    this.setState({loading: false})
+    setLoading(false)
   } 
 
   // get book
-  getBook = async bookId => {
-    this.setState({loading: true})
+  const getBook = async bookId => {
+    setLoading(true)
     try {
       const res = await axios.get(`https://www.googleapis.com/books/v1/volumes/${bookId}`)
-      this.setState({book: res.data})
+      setBook(res.data)
     } catch (error) {
       console.log(error)  
     }
-    this.setState({loading: false})
+    setLoading(false)
   }
 
   // clear books form state
-  clearBooks = () => this.setState({books: []})
+  const clearBooks = () => setBooks([])
 
   // show alert
-  showAlert = (msg, type) => {
-    this.setState({alert: {msg, type}})
+  const showAlert = (msg, type) => {
+    setAlert({msg, type})
     // set alert back to null after 3 seconds
-    setTimeout(() => {this.setState({alert: null})}, 3000)
+    setTimeout(() => {setAlert(null)}, 3000)
   }
 
-  render() {
-    const {books, book, loading, alert} = this.state
-    return(
-      <Router>
-        <div className="App">
-          <Navbar/>
-          <div className="container mt-3">
-            <Alert alert={alert}/>
-            <Switch>
-              <Route exact path="/" render={props => 
-                <Fragment>
-                  <Search 
-                    searchBooks={this.searchBooks} 
-                    clearBooks={this.clearBooks} 
-                    showClear={books.length > 0 ? true : false}
-                    showAlert={this.showAlert}
-                  />
-                  <Books 
-                    books={books} 
-                    loading={loading}
-                  />
-                </Fragment>
-              } />
-              <Route exact path="/about" component={About} />
-              <Route exact path="/book/:bookId" render={props => 
-                <Book 
-                  {...props} 
-                  getBook={this.getBook}
-                  book={book} 
+  return(
+    <Router>
+      <div className="App">
+        <Navbar/>
+        <div className="container mt-3">
+          <Alert alert={alert}/>
+          <Switch>
+            <Route exact path="/" render={props => 
+              <Fragment>
+                <Search 
+                  searchBooks={searchBooks} 
+                  clearBooks={clearBooks} 
+                  showClear={books.length > 0 ? true : false}
+                  showAlert={showAlert}
+                />
+                <Books 
+                  books={books} 
                   loading={loading}
                 />
-              } />
-            </Switch>
-          </div>
+              </Fragment>
+            } />
+            <Route exact path="/about" component={About} />
+            <Route exact path="/book/:bookId" render={props => 
+              <Book 
+                {...props} 
+                getBook={getBook}
+                book={book} 
+                loading={loading}
+              />
+            } />
+          </Switch>
         </div>
-      </Router>
-    )
-  }
+      </div>
+    </Router>
+  )
 }
 
 export default App;

@@ -12,6 +12,8 @@ const Book = ({book, loading, getBook, ...extraProps}) => {
     useEffect(()=>{
         const bookId = extraProps.match.params.bookId
         getBook(bookId)
+
+        /* --- The following comment disables "React Hook useEffect has missing dependencies:" warning --- */
         // eslint-disable-next-line
     }, [])
 

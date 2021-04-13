@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/book-finder/static/css/main.330761f8.chunk.css",
+    "main.js": "/book-finder/static/js/main.3f89e99b.chunk.js",
+    "main.js.map": "/book-finder/static/js/main.3f89e99b.chunk.js.map",
+    "runtime-main.js": "/book-finder/static/js/runtime-main.5b5f1977.js",
+    "runtime-main.js.map": "/book-finder/static/js/runtime-main.5b5f1977.js.map",
+    "static/css/2.186b0136.chunk.css": "/book-finder/static/css/2.186b0136.chunk.css",
+    "static/js/2.1beb2246.chunk.js": "/book-finder/static/js/2.1beb2246.chunk.js",
+    "static/js/2.1beb2246.chunk.js.map": "/book-finder/static/js/2.1beb2246.chunk.js.map",
+    "index.html": "/book-finder/index.html",
+    "static/css/2.186b0136.chunk.css.map": "/book-finder/static/css/2.186b0136.chunk.css.map",
+    "static/css/main.330761f8.chunk.css.map": "/book-finder/static/css/main.330761f8.chunk.css.map",
+    "static/js/2.1beb2246.chunk.js.LICENSE.txt": "/book-finder/static/js/2.1beb2246.chunk.js.LICENSE.txt",
+    "static/media/font-awesome.min.css": "/book-finder/static/media/fontawesome-webfont.f691f37e.woff",
+    "static/media/spinner.5cb82f8b.gif": "/book-finder/static/media/spinner.5cb82f8b.gif"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.5b5f1977.js",
+    "static/css/2.186b0136.chunk.css",
+    "static/js/2.1beb2246.chunk.js",
+    "static/css/main.330761f8.chunk.css",
+    "static/js/main.3f89e99b.chunk.js"
+  ]
+}

@@ -2,13 +2,15 @@
   "name": "book-finder",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://eyu-tes.github.io/book-finder/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
-    "axios": "^0.21.0",
+    "axios": "^0.21.1",
     "bootstrap": "^4.5.3",
     "font-awesome": "^4.7.0",
+    "gh-pages": "^3.1.0",
     "jquery": "^3.5.1",
     "popper.js": "^1.16.1",
     "query-string": "^6.13.6",
@@ -16,14 +18,15 @@
     "react-dom": "^17.0.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.0",
-    "typescript": "^4.0.3",
     "web-vitals": "^0.2.4"
   },
   "scripts": {
-    "start": "set PORT=3001 && react-scripts start",
+    "start": "set PORT=3003 && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+	"predeploy": "npm run build",
+	"deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [

@@ -24,6 +24,7 @@ const App = () => {
       setBooks(res.data.items || [])
     } catch (error) {
       console.log(error)
+	  showAlert("Book not found!", "warning")
     }
     setLoading(false)
   } 

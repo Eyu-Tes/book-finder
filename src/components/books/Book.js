@@ -21,7 +21,7 @@ const Book = ({book, loading, getBook, ...extraProps}) => {
         loading ? 
         <Spinner/> : 
         <Fragment>
-            <Link to="/" className="btn btn-light"><i className="fa fa-arrow-circle-left mr-2"></i> Back To Search</Link>
+            <Link to="/book-finder" className="btn btn-light"><i className="fa fa-arrow-circle-left mr-2"></i> Back To Search</Link>
             <div className="card border-0 my-3 p-1">
                 <div className="row">
                     <div className="col-sm-4">

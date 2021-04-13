@@ -6,7 +6,7 @@ import './Navbar.css'
 const Navbar = () => 
     <nav className="navbar navbar-expand-md">
         <div className="container">
-            <a className="navbar-brand" href="/#"> 
+            <a className="navbar-brand" href="/book-finder"> 
                 <img src={logo} alt="book finder"/> Book Finder 
             </a>
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar">
@@ -17,10 +17,10 @@ const Navbar = () =>
                 <div className="dropdown-divider"></div>
                 <ul className="navbar-nav ml-auto">
                     <li className="nav-item">
-                        <Link to="/" className="nav-link">Home</Link>
+                        <Link to="/book-finder" className="nav-link">Home</Link>
                     </li>
                     <li className="nav-item">
-                        <Link to="/about" className="nav-link">About</Link>
+                        <Link to="/book-finder/about" className="nav-link">About</Link>
                     </li>
                 </ul>
             </div>

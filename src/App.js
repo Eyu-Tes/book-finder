@@ -57,7 +57,7 @@ const App = () => {
         <div className="container mt-3">
           <Alert alert={alert}/>
           <Switch>
-            <Route exact path="/" render={props => 
+            <Route exact path="/book-finder" render={props => 
               <Fragment>
                 <Search 
                   searchBooks={searchBooks} 
@@ -71,8 +71,8 @@ const App = () => {
                 />
               </Fragment>
             } />
-            <Route exact path="/about" component={About} />
-            <Route exact path="/book/:bookId" render={props => 
+            <Route exact path="/book-finder/about" component={About} />
+            <Route exact path="/book-finder/book/:bookId" render={props => 
               <Book 
                 {...props} 
                 getBook={getBook}
